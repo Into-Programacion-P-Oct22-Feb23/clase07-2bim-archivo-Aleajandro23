@@ -45,7 +45,7 @@ public class LeerArchivoTexto {
 
             while (entrada.hasNext()) {
                 String linea = entrada.nextLine();
-                List<String> lista = Arrays.asList(linea.split(";"));
+                List<String> lista = Arrays.asList(linea.split(";"));  // usar una nueva clase de java usada List like Arrayslist
                 System.out.println(lista);
                 
             } // fin de while
@@ -69,8 +69,8 @@ public class LeerArchivoTexto {
 
             while (entrada.hasNext()) {
                 String linea = entrada.nextLine();
-                List<String> lista = Arrays.asList(linea.split(";"));
-                ArrayList<String> linea_partes = new ArrayList<>(lista);
+                List<String> lista = Arrays.asList(linea.split(";")); // convierte una lista
+                ArrayList<String> linea_partes = new ArrayList<>(lista); // convierto en una Arraylist
                 for (int i = 0; i < linea_partes.size(); i++) {
                     System.out.println(linea_partes.get(i));
                 }
@@ -104,9 +104,12 @@ public class LeerArchivoTexto {
                 String linea = entrada.nextLine();
                 List<String> lista = Arrays.asList(linea.split(";"));
                 ArrayList<String> linea_partes = new ArrayList<>(lista);
-                for (int i = 0; i < linea_partes.size(); i++) {
-                    System.out.println(linea_partes.get(i));
-                }
+                
+                    System.out.println("Nombre de Materia: " +linea_partes.get(0));
+                    System.out.println("Promedio de Notas: " +linea_partes.get(1));
+                    System.out.println("Nombre de Docente: " +linea_partes.get(2));
+                    System.out.println("Tipo de Contrato: " +linea_partes.get(3));
+                
                 System.out.println("-----------------------------------");
 
             } // fin de while
@@ -118,6 +121,31 @@ public class LeerArchivoTexto {
         } // fin de catch
     } // fin del m�todo leerRegistros
     // cierra el archivo y termina la aplicaci�n
+    
+     public static void leerRegistros05() {
+
+        // 1. Se abre el archivo
+        try // lee registros del archivo, usando el objeto Scanner
+        {
+            Scanner entrada = new Scanner(new File("data/datosTres.txt"));
+
+            while (entrada.hasNext()) {
+                String linea = entrada.nextLine();
+                List<String> lista = Arrays.asList(linea.split(";")); // convierte una lista
+                ArrayList<String> linea_partes = new ArrayList<>(lista); // convierto en una Arraylist
+                System.out.printf("%s\n", linea_partes.get(2));
+                System.out.println("-----------------------------------");
+
+            } // fin de while
+            entrada.close();
+        } // fin de try
+        catch (Exception e) {
+            System.err.println("Error al leer del archivo.");
+            System.exit(1); 
+        } // fin de catch
+    } // fin del m�todo leerReg
+    
+    
 
     
 } // fin de la clase LeerArchivoTexto
